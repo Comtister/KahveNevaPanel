@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.oguzhanozturk.kahvenevapanel.R;
 import org.oguzhanozturk.kahvenevapanel.activities.FalListActivity;
 import org.oguzhanozturk.kahvenevapanel.models.FalData;
+import org.oguzhanozturk.kahvenevapanel.models.FallarListAdapter;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class FalListView {
     private FalListActivity ownController;
 
     private RecyclerView falList;
+    private FallarListAdapter adapter;
 
     public FalListView(Context context , ViewGroup viewGroup){
 
@@ -38,7 +40,8 @@ public class FalListView {
 
     public void setDataList(ArrayList<FalData> data){
 
-
+        adapter = new FallarListAdapter(data);
+        falList.setAdapter(adapter);
 
 
     }

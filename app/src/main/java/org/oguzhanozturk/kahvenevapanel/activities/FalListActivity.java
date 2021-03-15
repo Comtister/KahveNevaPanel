@@ -24,7 +24,7 @@ public class FalListActivity extends AppCompatActivity {
         ownView = new FalListView(this,null);
         setContentView(ownView.getRootView());
         ownView.initViews();
-
+        fetchFalDatas();
 
 
     }
@@ -36,7 +36,7 @@ public class FalListActivity extends AppCompatActivity {
         firestoreManager.fetchFals(new FalDataFetchListener() {
             @Override
             public void onSuccesListener(ArrayList<FalData> data) {
-
+                ownView.setDataList(data);
             }
 
             @Override

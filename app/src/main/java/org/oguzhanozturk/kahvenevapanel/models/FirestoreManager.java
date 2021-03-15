@@ -18,6 +18,7 @@ import org.oguzhanozturk.kahvenevapanel.interfaces.FirestoreManagerInterface;
 import org.oguzhanozturk.kahvenevapanel.constants.NetworkError;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class FirestoreManager extends NetworkManager implements FirestoreManagerInterface {
 
@@ -45,10 +46,10 @@ public class FirestoreManager extends NetworkManager implements FirestoreManager
                             for(int i = 0 ; i < imageUrlBuffer.length ; i++ ){
                                 imageUrls.add(Uri.parse(imageUrlBuffer[i]));
                             }
-
-                            data.add(new FalData(documentSnapshot.get("cevap").toString(),documentSnapshot.get("cinsiyet").toString(),Integer.valueOf(documentSnapshot.get("id").toString()),
+                            Log.i("dada",String.valueOf(queryDocumentSnapshots.size()));
+                            data.add(new FalData(documentSnapshot.get("cevap").toString(),documentSnapshot.get("cinsiyet").toString(), documentSnapshot.get("id").toString(),
                                     documentSnapshot.get("ilgi").toString(),imageUrls,documentSnapshot.get("isim").toString(),documentSnapshot.get("mail").toString(),
-                                    documentSnapshot.get("medeni_durum").toString(),documentSnapshot.get("message").toString(),Integer.valueOf(documentSnapshot.get("yas").toString())));
+                                    documentSnapshot.get("medeni_durum").toString(),documentSnapshot.get("message").toString(),Integer.valueOf(documentSnapshot.get("yas").toString()),documentSnapshot.getId()));
 
 
                         }

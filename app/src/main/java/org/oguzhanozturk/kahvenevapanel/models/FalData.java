@@ -4,12 +4,13 @@ import android.net.Uri;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class FalData {
 
     private String cevap;
     private String cinsiyet;
-    private int id;
+    private String id;
     private  String ilgi;
     private ArrayList<Uri> imageUrls;
     private String isim;
@@ -17,8 +18,9 @@ public class FalData {
     private String medeniDurum;
     private String message;
     private int yas;
+    private String tarih;
 
-    public FalData(String cevap, String cinsiyet, int id, String ilgi, ArrayList<Uri> imageUrls, String isim, String mail, String medeniDurum, String message, int yas) {
+    public FalData(String cevap, String cinsiyet, String id, String ilgi, ArrayList<Uri> imageUrls, String isim, String mail, String medeniDurum, String message, int yas , String tarih) {
         this.cevap = cevap;
         this.cinsiyet = cinsiyet;
         this.id = id;
@@ -29,6 +31,7 @@ public class FalData {
         this.medeniDurum = medeniDurum;
         this.message = message;
         this.yas = yas;
+        this.tarih = tarih;
     }
 
     public String getCevap() {
@@ -47,11 +50,11 @@ public class FalData {
         this.cinsiyet = cinsiyet;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -110,4 +113,27 @@ public class FalData {
     public void setYas(int yas) {
         this.yas = yas;
     }
+
+    public String getTarih() {
+        return tarih;
+    }
+
+    public void setTarih(String tarih) {
+        this.tarih = tarih;
+    }
+
+    public ArrayList<String> getUrlString(){
+
+        ArrayList<String> stringUrls = new ArrayList<>();
+
+        for(int i = 0 ; i < this.imageUrls.size() ; i++ ){
+
+            stringUrls.add(this.imageUrls.get(i).toString());
+
+        }
+        System.out.println("SINIFTAN DÖNEN" + stringUrls);
+        return stringUrls;
+
+    }
+
 }

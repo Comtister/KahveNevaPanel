@@ -17,6 +17,7 @@ public class FalListActivity extends AppCompatActivity {
 
 
     private FalListView ownView;
+    private boolean isFirst = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +30,18 @@ public class FalListActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("SDASDAS");
+        if(isFirst){
+            isFirst = false;
+            return;
+        }else{
+            fetchFalDatas();
+
+        }
+    }
 
     private void fetchFalDatas(){
 

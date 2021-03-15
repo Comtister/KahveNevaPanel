@@ -46,6 +46,10 @@ public class FalListView {
 
     }
 
+    public void notifityData(){
+        adapter.notifyDataSetChanged();
+    }
+
     public View getRootView() {
         return rootView;
     }

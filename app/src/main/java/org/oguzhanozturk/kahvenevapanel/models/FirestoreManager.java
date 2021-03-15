@@ -13,6 +13,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import org.oguzhanozturk.kahvenevapanel.interfaces.AuthProcessListener;
+import org.oguzhanozturk.kahvenevapanel.interfaces.CevapUpdateListener;
 import org.oguzhanozturk.kahvenevapanel.interfaces.FalDataFetchListener;
 import org.oguzhanozturk.kahvenevapanel.interfaces.FirestoreManagerInterface;
 import org.oguzhanozturk.kahvenevapanel.constants.NetworkError;
@@ -67,6 +68,28 @@ public class FirestoreManager extends NetworkManager implements FirestoreManager
         });
 
 
+
+    }
+
+    public void updateCevap(String cevap , String profileId , String date , final CevapUpdateListener cevapUpdateListener){
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        System.out.println(cevap);
+        System.out.println(profileId);
+        System.out.println(date);
+        db.collection("Fallar").document(profileId).collection("gonderilen").document(date)
+                .update("cevap",cevap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        cevapUpdateListener.onSucces();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
     }
 

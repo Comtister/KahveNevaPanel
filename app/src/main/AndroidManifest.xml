@@ -24,7 +24,7 @@
 
         <activity android:name=".activities.SignUpActivity"/>
         <activity android:name=".activities.FalListActivity"/>
-        <activity android:name=".activities.FalCevapActivity"/>
+        <activity android:name=".activities.FalCevapActivity" android:hardwareAccelerated="true"/>
 
     </application>
 

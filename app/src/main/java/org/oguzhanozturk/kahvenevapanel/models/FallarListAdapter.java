@@ -29,12 +29,12 @@ public class FallarListAdapter extends RecyclerView.Adapter<FallarListAdapter.Fa
     public FallarListViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
 
         View card = LayoutInflater.from(parent.getContext()).inflate(R.layout.fallar_list_card,parent,false);
+
         final FallarListViewHolder holder = new FallarListViewHolder(card);
 
-        card.setOnClickListener(new View.OnClickListener() {
+        card.findViewById(R.id.listCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(parent.getContext(), FalCevapActivity.class);
 
                 Bundle dataBundle = new Bundle();
@@ -45,7 +45,8 @@ public class FallarListAdapter extends RecyclerView.Adapter<FallarListAdapter.Fa
                 dataBundle.putInt("yas",data.get(holder.getLayoutPosition()).getYas());
                 dataBundle.putString("medeni_durum",data.get(holder.getLayoutPosition()).getMedeniDurum());
                 dataBundle.putString("ilgi",data.get(holder.getLayoutPosition()).getIlgi());
-                dataBundle.putString("isim",data.get(holder.getLayoutPosition()).getIsim());
+                dataBundle.putString("mesaj",data.get(holder.getLayoutPosition()).getMessage());
+                dataBundle.putString("tarih",data.get(holder.getLayoutPosition()).getTarih());
                 dataBundle.putStringArrayList("imageUrls",data.get(holder.getLayoutPosition()).getUrlString());
 
                 intent.putExtra("data",dataBundle);
